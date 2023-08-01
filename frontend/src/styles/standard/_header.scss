@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  width:95%;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid $colors_first;
+  margin-top: $margin_sm;
+  margin-bottom: $margin_l;
+
+  &_logo {
+    width:15%;
+    
+    img {
+      width: 90%;
+    }
+  }
+
+  &_title {
+    width: 70%;
+    text-align: center;
+    color: $colors_second;
+    line-height: $font_xxl;
+    
+    h1 {
+      font-family: $fontstyle_h1;
+      font-size: $font_xxl;
+    }
+  }
+}

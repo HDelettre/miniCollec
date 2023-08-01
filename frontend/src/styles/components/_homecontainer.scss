@@ -1,0 +1,41 @@
+.homecontainer {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  &_box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &_card {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.infocontainer {
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  padding: $margin_s;
+  margin-bottom: $margin_m;
+  background-color: $colors_fourth;
+  border-radius: $radius_s;
+
+  &_box {
+    font-size: $font_m;
+    background-color: $colors_fourth;
+    margin: 0 $margin_sm;
+  }
+}
+
+.navbar {
+  width: 5%;
+  border-right: 3px solid $colors_third;
+  text-align: center;
+}
+

@@ -6,11 +6,12 @@ import HomeContainer from './components/home/HomeContainer';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomeContainer />} />
-      </Routes>
-    </BrowserRouter>
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path = "/" element = { <HomeContainer /> } />
+    //   </Routes>
+    // </BrowserRouter>
+    <HomeContainer />
   );
 }
 

@@ -3,23 +3,23 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 
 //REDUX
-import store from "./redux/store";
+// import store from "./redux/store";
 import { Provider } from "react-redux";
 
 // IMPORT STYLES
 import "./styles/styles.css";
 
 // IMPORT COMPONENTS
-import Header from "./components/standard/Header";
-import Footer from "./components/standard/Footer";
+import Header from "./components/header/Header";
+import Footer from "./components/header/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    {/* <Provider store={store}> */}
       <Header />
       <App />
       <Footer />
-    </Provider>
+    {/* </Provider> */}
   </React.StrictMode>
 );
