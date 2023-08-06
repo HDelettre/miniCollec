@@ -20,11 +20,14 @@ body {
 }
 
 .titleBloc {
-  font-size: 22px;
+  width: 100%;
+  font-size: 18px;
   font-weight: 800;
-  background-color: #c8c8c8;
   padding: 8px;
   margin-bottom: 8px;
+  border-left: 2px solid #579eff;
+  border-bottom: 2px solid #579eff;
+  border-bottom-left-radius: 8px;
 }
 
 .header {
@@ -108,8 +111,39 @@ body {
 }
 .homecontainer_card {
   width: 95%;
+  margin-left: 14px;
+}
+.homecontainer_card--section {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.homecontainer_card--section img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 16/9;
+  max-width: 95%;
+  max-height: 200px;
+  border-radius: 8px;
+}
+.homecontainer_vignette {
+  color: #003580;
+}
+.homecontainer_vignette img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 16/9;
+  max-width: 95%;
+  max-height: 200px;
+  border-radius: 8px;
+}
+.homecontainer_vignette p {
+  font-size: 14px;
+  margin: 0;
 }
 
 .infocontainer {
@@ -129,6 +163,23 @@ body {
 
 .navbar {
   width: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   border-right: 3px solid red;
-  text-align: center;
+}
+.navbar_icon {
+  font-size: 35px;
+  cursor: pointer;
+}
+.navbar_icon--red {
+  color: red;
+  font-size: 35px;
+  cursor: pointer;
+}
+.navbar_icon--blue {
+  color: #579eff;
+  font-size: 35px;
+  cursor: pointer;
 }/*# sourceMappingURL=styles.css.map */

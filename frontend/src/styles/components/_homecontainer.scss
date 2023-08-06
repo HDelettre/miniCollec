@@ -12,8 +12,42 @@
 
   &_card {
     width: 95%;
-    display: flex;
-    justify-content: center;
+    margin-left: $margin_m;
+
+    &--section {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      color: $colors_third;
+      text-align: center;
+      margin-top: $margin_l;
+      cursor: pointer;
+
+      img {
+        object-fit: cover;
+        aspect-ratio: 16/9;
+        max-width: 95%;
+        max-height: 200px;
+        border-radius: $radius_s;
+      }
+    }
+  }
+
+  &_vignette {
+    color: $colors_first;
+
+    img {
+      object-fit: cover;
+      aspect-ratio: 16/9;
+      max-width: 95%;
+      max-height: 200px;
+      border-radius: $radius_s;
+    }
+
+    p {
+      font-size: $font_m;
+      margin: 0;
+    }
   }
 }
 
@@ -33,9 +67,4 @@
   }
 }
 
-.navbar {
-  width: 5%;
-  border-right: 3px solid $colors_third;
-  text-align: center;
-}
 

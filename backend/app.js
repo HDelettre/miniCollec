@@ -20,7 +20,7 @@ require("./modelpictures/models");
 require("./users/models");
 require("./posts/models");
 
-sequelize.sync({ force: true });
+sequelize.sync({ alter: true });
 
 // HELMET
 const helmet = require("helmet");

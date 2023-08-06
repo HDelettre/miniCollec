@@ -1,7 +1,10 @@
 .titleBloc {
-  font-size: $font_xl;
+  width: 100%;
+  font-size: $font_l;
   font-weight: 800;
-  background-color: $colors_fourth;
   padding: $margin_s;
   margin-bottom: $margin_s;
+  border-left: 2px solid $colors_second;
+  border-bottom: 2px solid $colors_second;
+  border-bottom-left-radius: $radius_s;
 }
