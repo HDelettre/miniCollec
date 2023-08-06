@@ -1,8 +1,11 @@
 import React from 'react';
 
 const CreateUserButton = () => {
+
+  const createUserHandle = () => {};
+
   return (
-    <div>
+    <div className='navbar_icon fa-solid fa-user' title='Create User'>
       
     </div>
   );

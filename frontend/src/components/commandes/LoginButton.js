@@ -1,12 +1,13 @@
 import React from 'react';
 
-const LoginButton = ({setUserConnected}) => {
+const LoginButton = ({setDisplayStatus}) => {
 
-  const loginHandle = () => {};
+  const loginHandle = () => {
+    setDisplayStatus("login");
+  };
   
   return (
     <div className='navbar_icon--blue fa-solid fa-right-to-bracket' title='Login' onClick={loginHandle} >
-      
     </div>
   );
 }

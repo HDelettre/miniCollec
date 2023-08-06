@@ -6,23 +6,7 @@ import HomeBox from "./HomeBox";
 import SpinLoader from "../standard/SpinLoader";
 import HomeVignette from "./HomeVignette";
 
-const HomeCard = ({setDisplayStatus, setIdSelect}) => {
-  const [allModels, setAllModels] = useState("");
-
-  useEffect(() => {
-    async function fetchAllModels() {
-      const reponse = await fetch(`${process.env.REACT_APP_API}/modelcars`, {
-        method: "GET",
-      });
-
-      const reponseJSON = await reponse.json();
-      setAllModels(reponseJSON);
-    }
-
-    if (!allModels) {
-      fetchAllModels();
-    }
-  }, [allModels]);
+const HomeCard = ({setDisplayStatus, setIdSelect, allModels}) => {
 
   return (
     <>

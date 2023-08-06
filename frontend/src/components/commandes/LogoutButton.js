@@ -1,6 +1,6 @@
 import React from "react";
 
-const LogoutButton = ([setUserConnected]) => {
+const LogoutButton = ({setUserConnected}) => {
   const logoutHandle = () => {
     setUserConnected("");
   };

@@ -1,0 +1,15 @@
+.season {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &_button {
+    margin: $margin_m;
+    background-color: $colors_first;
+    color:$colors_white;
+    padding: $margin_sm;
+    border-radius: $radius_s;
+    max-height: 40px;
+  }
+}

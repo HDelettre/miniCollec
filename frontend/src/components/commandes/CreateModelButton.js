@@ -1,8 +1,11 @@
 import React from 'react';
 
 const CreateModelButton = () => {
+
+  const createModelHandle = () => {};
+
   return (
-    <div>
+    <div  className='navbar_icon fa-solid fa-car' title='Add Car' onClick={createModelHandle}>
       
     </div>
   );
