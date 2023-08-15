@@ -1,12 +1,13 @@
 import React from 'react';
 
-const CreateModelButton = () => {
+const CreateModelButton = ({setDisplayStatus}) => {
 
-  const createModelHandle = () => {};
+  const createModelHandle = () => {
+    setDisplayStatus('addcar');
+  };
 
   return (
     <div  className='navbar_icon fa-solid fa-car' title='Add Car' onClick={createModelHandle}>
-      
     </div>
   );
 }

@@ -17,23 +17,21 @@ const NavBar = ({
       {userConnected.role === undefined ? (
         <LoginButton setDisplayStatus={setDisplayStatus} />
       ) : (
-
-
-<>
-        {userConnected.role === "USER" ? (<LogoutButton setDisplayStatus={setDisplayStatus} />) : 
-        (
         <>
-        <CreateModelButton />
-        <CreateUserButton />
-        <UsersList />
-        <LogoutButton setUserConnected={setUserConnected} />
+          {userConnected.role === "USER" ? (
+            <LogoutButton setUserConnected={setUserConnected} />
+          ) : (
+            <>
+              <CreateModelButton setDisplayStatus={setDisplayStatus}  />
+              <CreateUserButton setDisplayStatus={setDisplayStatus}  />
+              <UsersList setDisplayStatus={setDisplayStatus}  />
+              <LogoutButton setUserConnected={setUserConnected} />
+            </>
+          )}
         </>
-        )}
-</>
 
         // <LogoutButton setUserConnected={setUserConnected} />
-        )}
-
+      )}
 
       {displayStatus !== "home" ? (
         <HomeButton setDisplayStatus={setDisplayStatus} />

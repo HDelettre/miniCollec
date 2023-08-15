@@ -1,0 +1,46 @@
+.boutonstd {
+  background-color: $colors_second;
+  width: 100px;
+  text-align: center;
+  padding: $margin_xs;
+  margin: $margin_s;
+  cursor: pointer;
+}
+
+.centralbloc {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.flag {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+  &_card {
+    width: 5%;
+    cursor: pointer;
+
+    img {
+      width: 90%;
+      object-fit: cover;
+    }
+  }
+}
+
+.driverbox {
+  cursor: pointer;
+  display: flex;
+  text-align: center;
+  margin: $margin_m;
+  padding: $margin_s;
+  border: 1px solid $colors_second;
+  border-radius: $radius_s;
+
+  &:hover {
+    border: 1px solid $colors_third;
+    color:$colors_third;
+  }
+}

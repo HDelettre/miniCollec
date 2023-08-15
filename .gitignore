@@ -1,3 +1,5 @@
 backend/node_modules
 backend/config/.env
 backend/pictures
+
+node_modules

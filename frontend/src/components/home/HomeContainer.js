@@ -10,6 +10,7 @@ import TeamsMenu from "../pages/TeamsMenu";
 import DriversMenu from "../pages/DriversMenu";
 import CarSheet from "../pages/CarSheet";
 import LoginSheet from "../pages/LoginSheet";
+import AddNewCar from '../admin/AddNewCar';
 
 const HomeContainer = () => {
   const [userConnected, setUserConnected] = useState([]);
@@ -82,6 +83,12 @@ const HomeContainer = () => {
 
         {displayStatus === "teams" ? <TeamsMenu /> : ""}
         {displayStatus === "drivers" ? <DriversMenu /> : ""}
+
+        {displayStatus === "addcar" ? <AddNewCar /> : ""}
+
+
+
+
         {displayStatus === "car" ? <CarSheet idSelect={idSelect} /> : ""}
       </div>
     </div>
