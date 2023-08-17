@@ -15,7 +15,7 @@ exports.getAllPictures = (req, res) => {
 exports.getOnePicture = (req, res) => {
   (async () => {
     try {
-
+      return res.status(200).json({message: "retour image"})
     } catch (error) {
       
     }

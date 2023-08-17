@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 // IMPORT BDD
-import manufacturerCollection from "../../bdd/manufacturerCollection";
-
-import Testbutton from "./testbutton";
 import listOfManufacturer from "../../bdd/listOfManufacturer";
 
 const ValidationCreateCar = ({
@@ -12,27 +9,64 @@ const ValidationCreateCar = ({
   annee,
   setAddingStep,
   raceSelect,
+  setModelManufacturer,
+  modelManufacturer,
+  setModelReference,
+  modelReference,
+  setModelStatus,
+  modelStatus,
 }) => {
-  // const [test, setTest] = useState([
-  //   "Spark",
-  //   "Minichamps",
-  //   "Brumm",
-  //   "Ixo",
-  //   "Presse",
-  //   "Hot Wheels",
-  //   "Looksmart",
-  // ]);
-  const [test, setTest] = useState(listOfManufacturer);
+  const statusList = ["En Vitrine", "En commande", "A Monter", "A Modifier"];
 
-  console.table("INIT TEST: ", test);
+  const ManufacturerHandle = (e) => {
+    setModelManufacturer(e.target.value);
+  };
 
-  const ManufacturerHandle = () => {};
+  const ReferenceHandle = (e) => {
+    setModelReference(e.target.value);
+  };
+
+  const StatusHandle = (e) => {
+    setModelStatus(e.target.value);
+  };
+
+  const validHandle = () => {
+    const modelData = {
+      season: decennie.slice(0, 3) + annee,
+      team: recapData.constructor,
+      model: recapData.car,
+      driver: recapData.driver,
+      race: raceSelect,
+      manufacturer: modelManufacturer,
+      reference: modelReference,
+      status: modelStatus,
+    };
+
+    console.table("MODEL DATA xx: ", modelData);
+
+    async function fetchCreateModel() {
+      const reponse = await fetch(`${process.env.REACT_APP_API}/modelCars`, {
+        method: "POST",
+        body: JSON.stringify(modelData),
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+
+      if (reponse.ok) {
+        setAddingStep(40);
+      }
+    }
+
+    fetchCreateModel();
+  };
 
   return (
     <>
-      <div>
-        <h3>Récapitulation des données: </h3>
-        <div>
+      <div className="recap">
+        <div className="recap_info">
+          <h3>Récapitulatif des données: </h3>
           Saison: {decennie.slice(0, 3)}
           {annee}
           <br />
@@ -44,26 +78,43 @@ const ValidationCreateCar = ({
           <br />
           Course: {raceSelect}
         </div>
-      </div>
 
-      <div>
-        <h3>Finalisation des données: </h3>
-        {test ? (
-          <>
-            {/* {test.map((data) => <>{data}<br/></>)} */}
-
-
-            <select name="man" id="man">
-              {test.map((data) => 
+        <div className="recap_data">
+          <h3>Finalisation des données: </h3>
+          <select name="man" id="man" onChange={ManufacturerHandle}>
+            <option name="selfab" key="selfab" id="selfab">
+              Choix du fabricant:
+            </option>
+            {listOfManufacturer.map((data) => (
               <option name={data} key={data} id={data}>
                 {data}
               </option>
-              )}
-            </select>
-          </>
-        ) : (
-          "B"
-        )}
+            ))}
+          </select>
+
+          <textarea
+            value={modelReference}
+            placeholder="Reference"
+            onChange={ReferenceHandle}
+          >
+            {modelReference}
+          </textarea>
+
+          <select name="stat" id="stat" onChange={StatusHandle}>
+            <option name="selstat" key="selstat" id="selstat">
+              Choix du status:
+            </option>
+            {statusList.map((data) => (
+              <option name={data} key={data} id={data}>
+                {data}
+              </option>
+            ))}
+          </select>
+
+          <div className="validButton" onClick={validHandle}>
+            VALIDER
+          </div>
+        </div>
       </div>
     </>
   );

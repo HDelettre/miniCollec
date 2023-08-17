@@ -27,6 +27,7 @@ exports.getOneModelCars = (req, res) => {
 };
 
 exports.createModelCars = (req, res) => {
+  
   (async ()=> {
     try {
       await ModelCars.create(req.body);
@@ -36,7 +37,6 @@ exports.createModelCars = (req, res) => {
     }
   })();
 
-  
 };
 
 exports.updateModelCars = (req, res) => {

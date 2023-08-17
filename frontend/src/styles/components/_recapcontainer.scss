@@ -1,0 +1,55 @@
+.recap {
+  width: 100%;
+  display: flex;
+  justify-content: space-around ;
+
+  &_info {
+    width: 40%;
+    text-align: center;
+    line-height: 2;
+  }
+
+  &_data {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    select {
+      padding: $margin_xs;
+      margin: $margin_m;
+      min-width: 175px;
+      text-align: center;
+      border-radius: $radius_s;
+      border-color: $colors_first;
+      color: $colors_first;
+    }
+    
+    textarea {
+      max-width: 175px;
+      max-height: 36px;
+      line-height: 36px;
+      text-align: center;
+      color: $colors_first;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    img {
+      object-fit: cover;
+      max-width: 75%;
+      margin: $margin_m;
+    }
+
+    input { 
+      width: 150px;
+      margin: $margin_m;
+    }
+  }
+}
