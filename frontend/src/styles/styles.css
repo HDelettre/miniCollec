@@ -331,4 +331,8 @@ body {
 
 .icon {
   font-size: 28px;
+}
+
+.messageError {
+  color: red;
 }/*# sourceMappingURL=styles.css.map */

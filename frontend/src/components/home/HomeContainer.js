@@ -35,7 +35,7 @@ const HomeContainer = () => {
     if (!allModels) {
       fetchAllModels();
     }
-  }, [allModels]);
+  }, [allModels, displayStatus]);
 
   return (
     <div className="homecontainer">
@@ -84,7 +84,7 @@ const HomeContainer = () => {
         {displayStatus === "teams" ? <TeamsMenu /> : ""}
         {displayStatus === "drivers" ? <DriversMenu /> : ""}
 
-        {displayStatus === "addcar" ? <AddNewCar /> : ""}
+        {displayStatus === "addcar" ? <AddNewCar setDisplayStatus={setDisplayStatus} /> : ""}
 
 
 

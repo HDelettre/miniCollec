@@ -1,5 +1,7 @@
 const express = require("express");
 
+const multer = require("../config/multer");
+
 const router = express.Router();
 
 const ctrlPath = require("./controllers");
@@ -9,8 +11,8 @@ const ctrlPath = require("./controllers");
 //
 router.get("/", ctrlPath.getAllPictures);
 router.get("/:id", ctrlPath.getOnePicture);
-router.post("/", ctrlPath.createPicture);
-router.patch("/:id", ctrlPath.updatePicture);
+router.post("/",multer, ctrlPath.createPicture);
+router.patch("/:id",multer, ctrlPath.updatePicture);
 router.delete("/:id", ctrlPath.deletePicture)
 
 //

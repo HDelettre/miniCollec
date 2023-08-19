@@ -15,6 +15,7 @@ const ValidationCreateCar = ({
   modelReference,
   setModelStatus,
   modelStatus,
+  setModelId
 }) => {
   const statusList = ["En Vitrine", "En commande", "A Monter", "A Modifier"];
 
@@ -39,7 +40,7 @@ const ValidationCreateCar = ({
       race: raceSelect,
       manufacturer: modelManufacturer,
       reference: modelReference,
-      status: modelStatus,
+      status: modelStatus
     };
 
     console.table("MODEL DATA xx: ", modelData);
@@ -53,8 +54,12 @@ const ValidationCreateCar = ({
           "Access-Control-Allow-Origin": "*",
         },
       });
+      console.table("REPONSE: ", reponse)
 
       if (reponse.ok) {
+        const reponseJson= await reponse.json();
+        console.log("REPONSE JSON: ",reponseJson);
+        setModelId(reponseJson.newModel.modelCarsId);
         setAddingStep(40);
       }
     }

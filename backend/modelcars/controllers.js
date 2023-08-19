@@ -26,17 +26,27 @@ exports.getOneModelCars = (req, res) => {
   })();
 };
 
-exports.createModelCars = (req, res) => {
-  
-  (async ()=> {
-    try {
-      await ModelCars.create(req.body);
-      return res.status(201).json("New model created !");
-    } catch (error) {
-      return res.status(500).send("Error during model creation");
-    }
-  })();
+// exports.createModelCars = (req, res) => {
+//   (async ()=> {
+//     try {
+//       await ModelCars.create(req.body);
+//       return res.status(201).json({message: "New model added in BDD !!", ModelCars});
+//     } catch (error) {
+//       return res.status(500).send(error);
+//     };
+//   })();
+// };
 
+exports.createModelCars = (req, res) => {
+  const newModel = ModelCars.build(req.body);
+  (async () => {
+    try {
+      await newModel.save();
+      return res.status(201).json({newModel});
+    } catch (error) {
+      return res.status(500).send(error);
+    };
+  })();
 };
 
 exports.updateModelCars = (req, res) => {

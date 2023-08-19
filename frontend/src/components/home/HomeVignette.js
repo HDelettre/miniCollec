@@ -5,15 +5,22 @@ const HomeVignette = ({modelData, setDisplayStatus, setIdSelect}) => {
   const [carPicture, setCarPicture] = useState("modelPictDefault.jpg");
 
   useEffect(() => {
-    const reponse = fetch(`${process.env.REACT_APP_API}/carsPicture/${modelData.modelCarsId}`, {
-      method: "GET"
-    });
+    (async () => {
+      const reponse = await fetch(`${process.env.REACT_APP_API}/carsPicture/${modelData.modelCarsId}`, {
+        method: "GET"
+      });
+  
+      const reponseJSON = await reponse.json();
 
-    if (reponse.ok) {
-      const reponseJSON = reponse.reponseJSON();
-      setCarPicture(reponseJSON);
-    }
-  }, [carPicture]);
+      if (reponseJSON.reponse !== null) {
+        const pictureData = reponseJSON.reponse;
+        setCarPicture(pictureData.pictureName);
+      } else {
+        setCarPicture("modelPictDefault.jpg")
+      };
+    })();
+
+  }, []);
 
 const carsHandle = (e) => {
   console.log(e.target.id)

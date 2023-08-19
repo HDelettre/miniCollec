@@ -8,7 +8,7 @@ import DriverBox from "../standard/DriverBox";
 import ValidationCreateCar from "../commandes/ValidationCreateCar";
 import AddModelPicture from "../commandes/AddModelPicture";
 
-const AddNewCar = () => {
+const AddNewCar = ({setDisplayStatus}) => {
   const [addingStep, setAddingStep] = useState(0);
   const [seasonData, setSeasonData] = useState();
   const [decennie, setDecennie] = useState();
@@ -22,6 +22,7 @@ const AddNewCar = () => {
   const [modelManufacturer, setModelManufacturer] = useState();
   const [modelReference, setModelReference] = useState("");
   const [modelStatus, setModelStatus] = useState("");
+  const [modelId, setModelId] = useState();
 
   const periodeList = [1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
 
@@ -181,6 +182,7 @@ const AddNewCar = () => {
           modelReference={modelReference}
           setModelStatus={setModelStatus}
           modelStatus={modelStatus}
+          setModelId={setModelId}
         />
       ) : (
         ""
@@ -193,7 +195,10 @@ const AddNewCar = () => {
           raceSelect={raceSelect}
           modelManufacturer={modelManufacturer}
           modelReference={modelReference}
-          modelStatus={modelStatus} />) : ("")}
+          modelStatus={modelStatus}
+          modelId={modelId}
+          setDisplayStatus={setDisplayStatus}
+           />) : ("")}
 
       {/* <div className='validButton' onClick={validHandle}>VALIDER</div> */}
     </div>
