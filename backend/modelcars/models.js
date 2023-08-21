@@ -30,7 +30,7 @@ const ModelCars = sequelize.define("ModelCars", {
   },
   race: {
     type: DataTypes.STRING,
-    allowNull:false
+    allowNull:true
   },
   manufacturer: {
     type: DataTypes.STRING,

@@ -5,7 +5,6 @@ import SeasonButton from "../standard/SeasonButton";
 import Titlebloc from "../standard/Titlebloc";
 
 const SeasonsMenu = ({ allModels, setDisplayStatus, setIdSelect }) => {
-
   const seasonList = [];
 
   for (let i = 0; i < allModels.length; i++) {
@@ -23,7 +22,12 @@ const SeasonsMenu = ({ allModels, setDisplayStatus, setIdSelect }) => {
 
         <div className="season">
           {seasonList.map((data) => (
-            <SeasonButton data={data} key={data} setDisplayStatus={setDisplayStatus} setIdSelect={setIdSelect} />
+            <SeasonButton
+              data={data}
+              key={data}
+              setDisplayStatus={setDisplayStatus}
+              setIdSelect={setIdSelect}
+            />
           ))}
         </div>
       </div>

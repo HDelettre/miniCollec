@@ -19,6 +19,9 @@ const ValidationCreateCar = ({
 }) => {
   const statusList = ["En Vitrine", "En commande", "A Monter", "A Modifier"];
 
+
+  console.log("RECAPDATA: ", recapData);
+
   const ManufacturerHandle = (e) => {
     setModelManufacturer(e.target.value);
   };
@@ -44,6 +47,7 @@ const ValidationCreateCar = ({
     };
 
     console.table("MODEL DATA xx: ", modelData);
+    console.table("RECAP DATA: ", recapData);
 
     async function fetchCreateModel() {
       const reponse = await fetch(`${process.env.REACT_APP_API}/modelCars`, {

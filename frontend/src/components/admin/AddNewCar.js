@@ -7,6 +7,8 @@ import FlagBox from "../standard/FlagBox";
 import DriverBox from "../standard/DriverBox";
 import ValidationCreateCar from "../commandes/ValidationCreateCar";
 import AddModelPicture from "../commandes/AddModelPicture";
+import CarsSelection from "../standard/CarsSelection";
+import DriverCarBox from "../standard/DriverCarBox";
 
 const AddNewCar = ({setDisplayStatus}) => {
   const [addingStep, setAddingStep] = useState(0);
@@ -15,6 +17,8 @@ const AddNewCar = ({setDisplayStatus}) => {
   const [annee, setAnnee] = useState();
   const [option, setOption] = useState("");
   const [raceList, setRaceList] = useState();
+  const [carsList, setCarsList] = useState();
+  const [carSelect, setCarSelect] = useState();
   const [raceSelect, setRaceSelect] = useState();
   const [driverList, setDriverList] = useState();
   const [driverSelect, setDriverSelect] = useState("");
@@ -23,6 +27,7 @@ const AddNewCar = ({setDisplayStatus}) => {
   const [modelReference, setModelReference] = useState("");
   const [modelStatus, setModelStatus] = useState("");
   const [modelId, setModelId] = useState();
+const [teamSelect, setTeamSelect] = useState();
 
   const periodeList = [1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
 
@@ -39,8 +44,8 @@ const AddNewCar = ({setDisplayStatus}) => {
       if (option === "Race") {
         setRaceList(dataSeason.calendar);
         setAddingStep(10);
-      } else {
-        const carsList = dataSeason.cars;
+      } else if (option === "Cars") {
+        setCarsList(dataSeason.cars);
         setAddingStep(20);
       }
     }
@@ -49,9 +54,33 @@ const AddNewCar = ({setDisplayStatus}) => {
       raceList.map((data) => {
         if (data.race === raceSelect) {
           setDriverList(data.subscript);
+          setAddingStep(15)
         }
       });
     }
+
+    if (addingStep === 25) {
+      carsList.map((data) => {
+        if (data.model === carSelect) {
+          console.log("CARLIST: ", data)
+          console.log("SEASON DATA: ", seasonData)
+          setDriverList(data.drivers);
+          setTeamSelect(data.team);
+          setAddingStep(17);
+        }
+      });
+    };
+
+    if (addingStep === 29 ) {
+      const carData = {
+        driver: driverSelect,
+        car: carSelect,
+        constructor: teamSelect,
+        race: ""
+      }
+      setRecapData(carData)
+      setAddingStep(31);
+    };
 
     if (addingStep === 30) {
       driverList.map((data) => {
@@ -62,8 +91,6 @@ const AddNewCar = ({setDisplayStatus}) => {
       setAddingStep(31);
     }
   }, [addingStep, driverList, recapData]);
-
-  // const validHandle = () => {};
 
   return (
     <div className="homecontainer_card">
@@ -148,7 +175,7 @@ const AddNewCar = ({setDisplayStatus}) => {
         ""
       )}
 
-      {addingStep === 11 && driverList ? (
+      {addingStep === 15 && driverList ? (
         <>
           <h3>Choisissez le pilote : </h3>
           <div className="flag">
@@ -167,7 +194,26 @@ const AddNewCar = ({setDisplayStatus}) => {
         ""
       )}
 
-      {addingStep === 20 ? "List of cars" : ""}
+      {addingStep === 17 ? (
+        <>
+        <h3>Choisissez le pilote pour {carSelect} : </h3>
+        <div className="flag">
+
+        {driverList.map((data) => (
+          <DriverCarBox data={data} key={data} setAddingStep={setAddingStep} setDriverSelect={setDriverSelect} />
+          ))}
+          </div>
+        </>
+      ):("")}
+
+      {addingStep === 20 ? <>
+      <h3>Choisissez le modèle:</h3>
+      <div className="flag">
+        {carsList.map((data) => (
+          <CarsSelection data={data} key={data.model} setAddingStep={setAddingStep} setCarSelect={setCarSelect} />
+        ))}
+      </div>
+      </> : ""}
 
       {addingStep === 31 ? (
         <ValidationCreateCar

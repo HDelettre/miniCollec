@@ -1,14 +1,10 @@
 import React from 'react';
 
-const DriverBox = ({data, setAddingStep, addingStep, setDriverSelect}) => {
+const DriverBox = ({data, setAddingStep, setDriverSelect}) => {
 
   const driverHandle = (e) => {
     setDriverSelect(e.target.id)
-    if (addingStep === 11) {
-      setAddingStep(30);
-    };
-
-
+    setAddingStep(30)
   };
 
   return (

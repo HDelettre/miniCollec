@@ -4,6 +4,8 @@ const HomeVignette = ({modelData, setDisplayStatus, setIdSelect}) => {
 
   const [carPicture, setCarPicture] = useState("modelPictDefault.jpg");
 
+  console.log("modeldata ", modelData)
+
   useEffect(() => {
     (async () => {
       const reponse = await fetch(`${process.env.REACT_APP_API}/carsPicture/${modelData.modelCarsId}`, {
@@ -30,10 +32,11 @@ const carsHandle = (e) => {
 
   return (
     <div className='homecontainer_vignette' onClick={carsHandle}>
-      <img src={`${process.env.REACT_APP_PICTURES}/modelcars/${carPicture}`} alt=""  id={modelData.modelCarsId}/>
-      <h3 id={modelData.modelCarsId}>{modelData.team}</h3>
-      <p id={modelData.modelCarsId}>
+      <img src={`${process.env.REACT_APP_PICTURES}/modelcars/${carPicture}`} alt="" id={modelData.modelCarsId}/>
+      <h3 id={modelData.modelCarsId} >{modelData.team}</h3>
+      <p  id={modelData.modelCarsId}>
       {modelData.season} - {modelData.model}<br/>
+      {modelData.driver} <br/>
       {modelData.race}
       </p>
     </div>

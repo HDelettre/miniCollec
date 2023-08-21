@@ -10,11 +10,10 @@ import TeamsMenu from "../pages/TeamsMenu";
 import DriversMenu from "../pages/DriversMenu";
 import CarSheet from "../pages/CarSheet";
 import LoginSheet from "../pages/LoginSheet";
-import AddNewCar from '../admin/AddNewCar';
+import AddNewCar from "../admin/AddNewCar";
 
 const HomeContainer = () => {
   const [userConnected, setUserConnected] = useState([]);
-  const [navStatus, setNavStatus] = useState("home");
   const [displayStatus, setDisplayStatus] = useState("home");
   const [idSelect, setIdSelect] = useState("");
 
@@ -32,10 +31,8 @@ const HomeContainer = () => {
       setAllModels(reponseJSON);
     }
 
-    if (!allModels) {
-      fetchAllModels();
-    }
-  }, [allModels, displayStatus]);
+    fetchAllModels();
+  }, []);
 
   return (
     <div className="homecontainer">
@@ -59,7 +56,14 @@ const HomeContainer = () => {
           ""
         )}
 
-        {displayStatus === "login" ? <LoginSheet setUserConnected={setUserConnected} setDisplayStatus={setDisplayStatus} /> : ""}
+        {displayStatus === "login" ? (
+          <LoginSheet
+            setUserConnected={setUserConnected}
+            setDisplayStatus={setDisplayStatus}
+          />
+        ) : (
+          ""
+        )}
 
         {displayStatus === "seasons" ? (
           <SeasonsMenu
@@ -76,6 +80,7 @@ const HomeContainer = () => {
             allModels={allModels}
             setDisplayStatus={setDisplayStatus}
             idSelect={idSelect}
+            setIdSelect={setIdSelect}
           />
         ) : (
           ""
@@ -84,10 +89,11 @@ const HomeContainer = () => {
         {displayStatus === "teams" ? <TeamsMenu /> : ""}
         {displayStatus === "drivers" ? <DriversMenu /> : ""}
 
-        {displayStatus === "addcar" ? <AddNewCar setDisplayStatus={setDisplayStatus} /> : ""}
-
-
-
+        {displayStatus === "addcar" ? (
+          <AddNewCar setDisplayStatus={setDisplayStatus} />
+        ) : (
+          ""
+        )}
 
         {displayStatus === "car" ? <CarSheet idSelect={idSelect} /> : ""}
       </div>

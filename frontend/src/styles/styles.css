@@ -145,6 +145,9 @@ body {
   font-size: 14px;
   margin: 0;
 }
+.homecontainer_vignette h3 {
+  margin: 5px;
+}
 
 .infocontainer {
   width: 100%;
